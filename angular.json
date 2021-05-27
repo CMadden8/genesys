@@ -85,9 +85,21 @@
           "options": {
             "browserTarget": "genesys:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "genesys"
+  "defaultProject": "genesys",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
