@@ -1,0 +1,16 @@
+<div *ngIf="$newsItem | async as newsItem">
+  <ul *ngIf="newsItem">
+    <li>
+      {{newsItem.title}}
+    </li>
+    <li>
+      {{newsItem.by}}
+    </li>
+    <li>
+      {{newsItem.time}}
+    </li>
+    <li *ngIf="newsItem.text">
+      {{newsItem.text}}
+    </li>
+  </ul>
+</div>

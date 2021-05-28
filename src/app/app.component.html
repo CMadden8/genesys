@@ -1,0 +1,6 @@
+test
+<ul>
+  <li *ngFor="let id of $newsItemIds | async">
+    <news-item [id]="id"></news-item>
+  </li>
+</ul>
