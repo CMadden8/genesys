@@ -1,5 +1,5 @@
 <div *ngIf="$newsItem | async as newsItem">
-  <ul *ngIf="newsItem">
+  <ul>
     <li>
       {{newsItem.title}}
     </li>
@@ -9,8 +9,7 @@
     <li>
       {{newsItem.time}}
     </li>
-    <li *ngIf="newsItem.text">
-      {{newsItem.text}}
+    <li *ngIf="newsItem.text !== ''" [innerHTML]="newsItem.text">
     </li>
   </ul>
 </div>

@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
   templateUrl: './news-item.component.html',
   styleUrls: ['./news-item.component.scss']
 })
+
 export class NewsItemComponent implements OnChanges {
 
   @Input() id: number;

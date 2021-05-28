@@ -1,6 +1,5 @@
-test
-<ul>
-  <li *ngFor="let id of $newsItemIds | async">
+<div>
+  <ng-container *ngFor="let id of $newsItemIds | async; trackBy: trackByFn">
     <news-item [id]="id"></news-item>
-  </li>
-</ul>
+  </ng-container>
+</div>
