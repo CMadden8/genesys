@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { NewsItemResponse, NewsItem } from '@models/news-item';
+import { NewsItemResponse, NewsItem, NewsTypeParam } from '@models/news-item';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -13,15 +13,19 @@ import * as moment from 'moment';
   providedIn: 'root',
 })
 
+/**
+ * @service that fetches an array of story ids and also fetches the full story using these ids
+ * 
+ */
 export class HackerNewsService {
 
   constructor(private db: AngularFireDatabase){}
   
   /**
-   * @returns observable of news story ids used to fetch individual new stories
+   * @returns an observable of news story ids used to fetch individual new stories
    */
-  public getNewestStories(): Observable<Array<number>> {
-    return this.db.list<number>('/v0/newstories', ref => ref.limitToFirst(100))
+  public getStories(newsType: NewsTypeParam): Observable<Array<number>> {
+    return this.db.list<number>(`/v0/${newsType}`, ref => ref.limitToFirst(100))
       .valueChanges();
   }
   
@@ -47,7 +51,7 @@ export class HackerNewsService {
                 text: newsItemResponse.text ? newsItemResponse.text : '',
                 url: newsItemResponse.url
               }
-              
+
               return formattedNewsItem;
 
             } else {

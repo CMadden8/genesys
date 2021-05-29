@@ -12,6 +12,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./news-item.component.scss']
 })
 
+
+/**
+ * @component that takes a story id as an input then fetches the full story from that id and prints it
+ * 
+ */
 export class NewsItemComponent implements OnChanges {
 
   @Input() id: number;

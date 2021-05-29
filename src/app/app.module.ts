@@ -6,6 +6,7 @@ import { NewsItemComponent } from '@components/news-item/news-item.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
       authDomain: '<AUTH_DOMAIN>'
     }),
     AngularFirestoreModule,
-    BrowserModule
+    BrowserModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

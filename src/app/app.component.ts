@@ -10,6 +10,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 
+/**
+ * @component that fetches all story ids and passes them to a child component news-item that renders the full story
+ * 
+ */
 export class AppComponent implements OnInit {
 
   public $newsItemIds: Observable<Array<number>>;
@@ -17,7 +21,7 @@ export class AppComponent implements OnInit {
   constructor(private hackerNewsService: HackerNewsService) {}
 
   ngOnInit() {
-    this.$newsItemIds = this.hackerNewsService.getNewestStories();
+    this.$newsItemIds = this.hackerNewsService.getStories('newstories');
   }
 
   /**
