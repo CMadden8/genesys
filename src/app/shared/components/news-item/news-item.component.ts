@@ -20,6 +20,7 @@ import { Observable } from 'rxjs';
 export class NewsItemComponent implements OnChanges {
 
   @Input() id: number;
+  @Input() showDescriptionText: boolean;
 
   public $newsItem: Observable<NewsItem>;
 

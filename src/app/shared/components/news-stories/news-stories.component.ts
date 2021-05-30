@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 import { HackerNewsService } from '@services/hacker-news.service';
 import { NewsType } from '@models/news-item';
@@ -19,7 +19,8 @@ export class NewsStoriesComponent implements OnInit {
 
   @Input() limit: number;
   @Input() newsType: NewsType;
-  @Input() layoutType: NewsType;
+  @Input() colClasses: string;
+  @Input() showDescriptionText: boolean;
 
   public $newsItemIds: Observable<Array<number>>;
 

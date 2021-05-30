@@ -1,5 +1,5 @@
 <div class="row">
   <ng-container *ngFor="let id of $newsItemIds | async; trackBy: trackByFn">
-    <news-item class="col-sm" [id]="id"></news-item>
+    <news-item [class]="colClasses" [id]="id" [showDescriptionText]="showDescriptionText"></news-item>
   </ng-container>
 </div>

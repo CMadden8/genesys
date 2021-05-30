@@ -1,10 +1,10 @@
 <div *ngIf="$newsItem | async as newsItem">
 
-  <h2>{{newsItem.title}}</h2>
+  <h3>{{newsItem.title}}</h3>
 
-  <h3><span class="author-label">Posted by</span> {{newsItem.by}} at {{newsItem.time}}</h3>
+  <h4><span class="author-label">Posted by</span> {{newsItem.by}} at {{newsItem.time}}</h4>
 
-  <div *ngIf="newsItem.text !== ''" [innerHTML]="newsItem.text" class="text-snippet"></div>
+  <div *ngIf="newsItem.text !== '' && showDescriptionText" [innerHTML]="newsItem.text" class="text-snippet"></div>
 
   <a class="btn btn-primary" [href]="newsItem.url" role="button" placement="top" [ngbTooltip]="newsItem.url" target="_blank">Article Link</a>
 
