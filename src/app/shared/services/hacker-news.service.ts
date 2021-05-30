@@ -22,10 +22,13 @@ export class HackerNewsService {
   constructor(private db: AngularFireDatabase){}
   
   /**
+   *  @param newsType is one of the 3 types of news that can be fetched
+   *  @param limit is the max number of news items to retrieve
+   * 
    * @returns an observable of news story ids used to fetch individual new stories
    */
-  public getStories(NewsType: NewsType, limit: number): Observable<Array<number>> {
-    return this.db.list<number>(`/v0/${NewsType}`, ref => ref.limitToFirst(limit))
+  public getStories(newsType: NewsType, limit: number): Observable<Array<number>> {
+    return this.db.list<number>(`/v0/${newsType}`, ref => ref.limitToFirst(limit))
       .valueChanges();
   }
   
@@ -46,7 +49,7 @@ export class HackerNewsService {
             if (newsItemResponse) {
               const formattedNewsItem: NewsItem = {
                 by: newsItemResponse.by,
-                time: moment.unix(newsItemResponse.time),
+                time: moment.unix(newsItemResponse.time).format('ddd D MMM YYYY H:m'),
                 title: newsItemResponse.title,
                 text: newsItemResponse.text ? newsItemResponse.text : '',
                 url: newsItemResponse.url

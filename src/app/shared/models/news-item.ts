@@ -1,5 +1,3 @@
-import * as moment from "moment";
-
 export interface NewsItemResponse {
   by: string;
   descendants: number;
@@ -13,6 +11,6 @@ export interface NewsItemResponse {
   text?: string;
 }
 
-export type NewsItem = Pick<NewsItemResponse, "by" | "title" | "text" | "url"> & { time: moment.Moment };
+export type NewsItem = Pick<NewsItemResponse, "by" | "title" | "text" | "url"> & { time: string };
 
 export type NewsType = 'topstories' | 'newstories' | 'beststories';

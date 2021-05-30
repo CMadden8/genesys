@@ -34,7 +34,7 @@ export class NewsStoriesComponent implements OnInit {
    * @param index is the index of the news story in the loop
    * @param id is the id of the news story in the loop
    * 
-   * @returns an id that will let Angular know what has and hasn't changed in the DOM for performance
+   * @returns a unique id that will let Angular know what has and hasn't changed in the DOM for performance
    */
   public trackByFn(index: number, id: number) {
     return id; 

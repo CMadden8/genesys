@@ -8,7 +8,7 @@
       "@components/*": ["src/app/shared/components/*"],
       "@services/*": ["src/app/shared/services/*"],
       "@models/*": ["src/app/shared/models/*"],
-      "@constants/*": ["src/app/shared/constants/*"]
+      "@styles/*": ["src/app/styles/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

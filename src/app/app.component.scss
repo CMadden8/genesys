@@ -1,0 +1,16 @@
+@import "colours";
+
+h1 { 
+  background: rgb(86,141,208);
+  background: linear-gradient(0deg, rgba(86,141,208,1) 0%, rgba(86,173,208,1) 100%); 
+  padding: 0.4rem 0.8rem;
+  color: $hackerNewsWhite;
+}
+
+.container { 
+  background-color: $hackerNewsWhite; 
+  padding-top: 0.8rem; 
+  margin-top: 1rem; 
+  border-radius: 6px; 
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
