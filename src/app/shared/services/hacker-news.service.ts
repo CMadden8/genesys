@@ -49,7 +49,7 @@ export class HackerNewsService {
             if (newsItemResponse) {
               const formattedNewsItem: NewsItem = {
                 by: newsItemResponse.by,
-                time: moment.unix(newsItemResponse.time).format('ddd D MMM YYYY H:m'),
+                time: moment.unix(newsItemResponse.time).format('ddd D MMM YYYY H:mm'),
                 title: newsItemResponse.title,
                 text: newsItemResponse.text ? newsItemResponse.text : '',
                 url: newsItemResponse.url

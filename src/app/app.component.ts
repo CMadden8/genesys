@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 
 /**
- * @component that fetches all story ids and passes them to a child component news-item that renders the full story
+ * @component that prints the main 3 sections: top stories, best stories, recent stories
  * 
  */
 export class AppComponent {

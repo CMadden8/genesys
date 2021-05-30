@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { HackerNewsService } from '@services/hacker-news.service';
 
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'news-item',
   templateUrl: './news-item.component.html',
-  styleUrls: ['./news-item.component.scss']
+  styleUrls: ['./news-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
