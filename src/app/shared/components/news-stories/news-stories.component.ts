@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { HackerNewsService } from '@services/hacker-news.service';
+import { NewsType } from '@models/news-item';
 
 import { Observable } from 'rxjs';
 
@@ -16,12 +17,16 @@ import { Observable } from 'rxjs';
  */
 export class NewsStoriesComponent implements OnInit {
 
+  @Input() limit: number;
+  @Input() newsType: NewsType;
+  @Input() layoutType: NewsType;
+
   public $newsItemIds: Observable<Array<number>>;
 
   constructor(private hackerNewsService: HackerNewsService) {}
 
   ngOnInit() {
-    this.$newsItemIds = this.hackerNewsService.getStories('newstories');
+    this.$newsItemIds = this.hackerNewsService.getStories(this.newsType, this.limit);
   }
 
   /**

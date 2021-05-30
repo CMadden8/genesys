@@ -8,11 +8,11 @@ export interface NewsItemResponse {
   time: number;
   title: string;
   url: string;
-  type: string;
+  type: NewsType;
   kids?: Array<number>;
   text?: string;
 }
 
 export type NewsItem = Pick<NewsItemResponse, "by" | "title" | "text" | "url"> & { time: moment.Moment };
 
-export type NewsTypeParam = 'topstories' | 'newstories' | 'beststories';
+export type NewsType = 'topstories' | 'newstories' | 'beststories';

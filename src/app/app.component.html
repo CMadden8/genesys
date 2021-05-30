@@ -1,1 +1,14 @@
-<news-stories></news-stories>
+<div class="container">
+
+  <h1>Hacker News</h1>
+
+  <h2>Top Stories</h2>
+  <news-stories newsType="topstories" [limit]="4"></news-stories>
+  
+  <h2>Best Stories</h2>
+  <news-stories newsType="beststories" [limit]="4"></news-stories>
+  
+  <h2>Recent Stories</h2>
+  <news-stories newsType="newstories" [limit]="50"></news-stories>
+
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { NewsItemResponse, NewsItem, NewsTypeParam } from '@models/news-item';
+import { NewsItemResponse, NewsItem, NewsType } from '@models/news-item';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -24,8 +24,8 @@ export class HackerNewsService {
   /**
    * @returns an observable of news story ids used to fetch individual new stories
    */
-  public getStories(newsType: NewsTypeParam): Observable<Array<number>> {
-    return this.db.list<number>(`/v0/${newsType}`, ref => ref.limitToFirst(100))
+  public getStories(NewsType: NewsType, limit: number): Observable<Array<number>> {
+    return this.db.list<number>(`/v0/${NewsType}`, ref => ref.limitToFirst(limit))
       .valueChanges();
   }
   
