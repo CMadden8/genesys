@@ -47,12 +47,14 @@ export class HackerNewsService {
           (newsItemResponse) => {
 
             if (newsItemResponse) {
+              const { by, time, title, url } = newsItemResponse;
+
               const formattedNewsItem: NewsItem = {
-                by: newsItemResponse.by,
-                time: moment.unix(newsItemResponse.time).format('ddd D MMM YYYY H:mm'),
-                title: newsItemResponse.title,
+                by,
+                time: moment.unix(time).format('ddd D MMM YYYY H:mm'),
+                title,
                 text: newsItemResponse.text ? newsItemResponse.text : '',
-                url: newsItemResponse.url
+                url
               }
 
               return formattedNewsItem;

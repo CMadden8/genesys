@@ -2,13 +2,13 @@
 
   <h1>Hacker News</h1>
 
-  <h2>Top Stories</h2>
-  <app-news-stories newsType="topstories" [limit]="4" colClasses="col-sm-12 col-md-6 col-lg-3" [showDescriptionText]="false"></app-news-stories>
-  
-  <h2>Best Stories</h2>
-  <app-news-stories newsType="beststories" [limit]="4" colClasses="col-sm-12 col-md-6 col-lg-3" [showDescriptionText]="false"></app-news-stories>
-  
-  <h2>Recent Stories</h2>
-  <app-news-stories newsType="newstories" [limit]="50" colClasses="col-12" [showDescriptionText]="true"></app-news-stories>
+  <ng-container *ngFor="let config of newsStoriesConfig">
+    <h2>{{config.headingText}}</h2>
+    <app-news-stories 
+      [newsType]="config.newsType" 
+      [limit]="config.limit" 
+      [colClasses]="config.colClasses" 
+      [showDescriptionText]="config.showDescriptionText"></app-news-stories>
+  </ng-container>
 
 </div>
