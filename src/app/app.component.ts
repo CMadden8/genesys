@@ -14,7 +14,7 @@ import { NewsStoriesConfig } from '@models/news-item';
  */
 export class AppComponent {
 
-  public newsStoriesConfig: Required<Array<NewsStoriesConfig>> = [
+  public newsStoriesConfig: Array<Required<NewsStoriesConfig>> = [
     {
       headingText: 'Top Stories',
       newsType: 'topstories',
