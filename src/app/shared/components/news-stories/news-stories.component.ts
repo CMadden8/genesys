@@ -6,7 +6,7 @@ import { NewsType } from '@models/news-item';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'news-stories',
+  selector: 'app-news-stories',
   templateUrl: './news-stories.component.html',
   styleUrls: ['./news-stories.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

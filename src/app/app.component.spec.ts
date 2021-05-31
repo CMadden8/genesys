@@ -30,8 +30,8 @@ describe('AppComponent', () => {
     expect(mainWrapper).toHaveClass('container');
   });
 
-  it('should set the correct attribute values on the news-stories child components', () => {
-    const newsStoriesComponents: Array<HTMLElement> = spectator.queryAll('news-stories');
+  it('should set the correct attribute values on the app-news-stories child components', () => {
+    const newsStoriesComponents: Array<HTMLElement> = spectator.queryAll('app-news-stories');
 
     expect(newsStoriesComponents[0]).toHaveAttribute('colClasses', 'col-sm-12 col-md-6 col-lg-3');
     expect(newsStoriesComponents[0]).toHaveAttribute('newsType', 'topstories');

@@ -6,7 +6,7 @@ import { HackerNewsService } from '@services/hacker-news.service';
 
 import { MockComponent } from 'ng-mocks';
 
-import { of } from 'rxjs';
+import { getStoriesMock } from 'src/jest-helpers'
 
 describe('NewsStoriesComponent', () => {
   let spectator: Spectator<NewsStoriesComponent>;
@@ -16,40 +16,23 @@ describe('NewsStoriesComponent', () => {
       MockComponent(NewsItemComponent)
     ],
     providers: [
-      mockProvider(HackerNewsService, {
-        getStories: () => { 
-          return of([
-            {
-              by: 'user1',
-              time: 'time1',
-              title: 'title1',
-              text: 'text1',
-              url: 'url1'
-            },
-            {
-              by: 'user2',
-              time: 'time2',
-              title: 'title2',
-              text: 'text2',
-              url: 'url2'
-            }
-          ]);
-        }
-      })
+      mockProvider(HackerNewsService, getStoriesMock)
     ]
   });
 
   beforeEach(() => spectator = createComponent());
 
-  it('should set up the screen with the correct titles and main wrapper', () => {
+  it('should set up the screen with the correct main wrapper', () => {
     const mainWrapper: HTMLElement | null = spectator.query('div');
 
     expect(mainWrapper).toHaveClass('row');
   });
 
-  it('should set the correct attribute values on the news-stories child components', () => {
-    const newsItems: Array<HTMLElement> = spectator.queryAll('news-item');
+  
+  it('should print 5 news-item child components if 5 ids were returned in getStories()', () => {
+    const newsItems: Array<HTMLElement> = spectator.queryAll('app-news-item');
 
-    expect(newsItems.length).toEqual(2);
+    expect(newsItems.length).toEqual(5);
   });
+
 });

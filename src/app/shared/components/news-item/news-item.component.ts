@@ -7,7 +7,7 @@ import { NewsItem } from '@models/news-item';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'news-item',
+  selector: 'app-news-item',
   templateUrl: './news-item.component.html',
   styleUrls: ['./news-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,6 +28,7 @@ export class NewsItemComponent implements OnChanges {
   constructor(private hackerNewsService: HackerNewsService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
+
     if (changes['id'] && changes['id'].currentValue) {
 
       const id: number = changes['id'].currentValue;
@@ -35,6 +36,7 @@ export class NewsItemComponent implements OnChanges {
       this.$newsItem = this.hackerNewsService.getItem(id);
 
     }
+
   }
   
 }

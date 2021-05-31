@@ -1,31 +1,37 @@
-// import { TestBed } from '@angular/core/testing';
-// import { AppComponent } from './app.component';
+import { Spectator, createComponentFactory, mockProvider } from '@ngneat/spectator/jest';
 
-// describe('AppComponent', () => {
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [
-//         AppComponent
-//       ],
-//     }).compileComponents();
-//   });
+import { NewsItemComponent } from './news-item.component';
+import { HackerNewsService } from '@services/hacker-news.service';
 
-//   it('should create the app', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.componentInstance;
-//     expect(app).toBeTruthy();
-//   });
+import { getItemMock } from 'src/jest-helpers'
 
-//   it(`should have as title 'genesys'`, () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.componentInstance;
-//     expect(app.title).toEqual('genesys');
-//   });
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-//   it('should render title', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     fixture.detectChanges();
-//     const compiled = fixture.nativeElement;
-//     expect(compiled.querySelector('.content span').textContent).toContain('genesys app is running!');
-//   });
-// });
+describe('NewsItemComponent', () => {
+  let spectator: Spectator<NewsItemComponent>;
+  const createComponent = createComponentFactory({
+    component: NewsItemComponent,
+    providers: [
+      mockProvider(HackerNewsService, getItemMock)
+    ],
+    imports: [NgbModule]
+  });
+
+  beforeEach(() => spectator = createComponent());
+
+  it('should set the correct text when an id is passed from the input and when showDescription text is set to true', () => {
+    spectator.setInput('id', 100000);
+    spectator.setInput('showDescriptionText', true);
+
+    const h3: HTMLElement | null = spectator.query('h3');
+    const h4: HTMLElement | null = spectator.query('h4');
+    const textSnippet: HTMLElement | null = spectator.query('.text-snippet');
+    const button: HTMLElement | null = spectator.query('.btn-primary');
+
+    expect(h3).toHaveText('title1');
+    expect(h4).toHaveText('Posted by user1 on time1');
+    expect(textSnippet).toHaveText('text1');
+    expect(button).toHaveText('Article Link');
+  });
+
+});
