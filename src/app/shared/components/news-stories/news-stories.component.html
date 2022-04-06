@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ngClass="{{newsType}}">
   <ng-container *ngFor="let id of $newsItemIds | async; trackBy: trackByFn">
     <app-news-item [class]="colClasses" [id]="id" [showDescriptionText]="showDescriptionText"></app-news-item>
   </ng-container>

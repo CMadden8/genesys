@@ -1,5 +1,7 @@
 import { createServiceFactory, SpectatorService, mockProvider } from '@ngneat/spectator/jest';
 
+import { NewsTypeName } from '@models/news-item';
+
 import { HackerNewsService } from './hacker-news.service';
 
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -30,7 +32,7 @@ describe('AuthService', () => {
   it('should call getStories when getStories() is triggered', () => {
     const spy = jest.spyOn(spectator.service, 'getStories');
 
-    spectator.service.getStories('topstories', 5);
+    spectator.service.getStories(NewsTypeName.TOPSTORIES, 5);
 
     expect(spy).toHaveBeenCalled();
   });

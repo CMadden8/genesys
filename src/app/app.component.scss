@@ -7,6 +7,12 @@ h1 {
   color: $hackerNewsWhite;
 }
 
+h2 {
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  background: $hackerNewsLightGrey;
+}
+
 .container { 
   background-color: $hackerNewsWhite; 
   padding-top: 0.8rem; 

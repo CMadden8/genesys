@@ -7,6 +7,7 @@ import { NewsStoriesComponent } from '@components/news-stories/news-stories.comp
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     AngularFirestoreModule,
     BrowserModule,
+    FontAwesomeModule,
     NgbModule
   ],
   providers: [],

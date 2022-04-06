@@ -1,3 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
 
 import { AppComponent } from './app.component';
@@ -11,7 +13,8 @@ describe('AppComponent', () => {
     component: AppComponent,
     declarations: [
       MockComponent(NewsStoriesComponent)
-    ]
+    ],
+    schemas: [NO_ERRORS_SCHEMA]
   });
 
   beforeEach(() => spectator = createComponent());

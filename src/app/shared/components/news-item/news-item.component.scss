@@ -1,8 +1,10 @@
 @import "colours";
 
-h3 { font-size: 1.4rem; color: $hackerNewsLightBlue; }
+h3 { font-size: 1.4rem; color: $hackerNewsLightBlue; margin-top: 0.6rem; }
 h4 { font-size: 1.1rem; color: $hackerNewsMediumGrey; font-style: italic; }
+
+.author-name { font-weight: bold; }
 
 .btn.btn-primary { margin-top: 0.5rem; margin-bottom: 1rem; }
 
-.author-name { font-weight: bold; }
+.no-url { text-transform: uppercase; color: $hackerNewsRed; margin-bottom: 0.8rem; font-weight: bold; }

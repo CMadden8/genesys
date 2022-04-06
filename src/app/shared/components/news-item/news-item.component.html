@@ -4,8 +4,16 @@
 
   <h4>Posted by <span class="author-name">{{newsItem.by}}</span> on {{newsItem.time}}</h4>
 
-  <div *ngIf="newsItem.text !== '' && showDescriptionText" [innerHTML]="newsItem.text" class="text-snippet"></div>
+  <div class="text-snippet" *ngIf="newsItem.text !== '' && showDescriptionText" [innerHTML]="newsItem.text"></div>
 
-  <a class="btn btn-primary" [href]="newsItem.url" role="button" placement="top" [ngbTooltip]="newsItem.url" target="_blank">Article Link</a>
+  <a class="btn btn-primary" 
+    *ngIf="newsItem.url !== '';else no_url"
+    [href]="newsItem.url" 
+    [ngbTooltip]="newsItem.url" 
+    role="button" 
+    placement="top" 
+    target="_blank"><span ><fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon>Full Article</span></a>
+
+  <ng-template #no_url><div class="no-url"><fa-icon [icon]="faWarning"></fa-icon> No URL Provided</div></ng-template>
 
 </div>

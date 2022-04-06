@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-import { NewsStoriesConfig } from '@models/news-item';
+import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
+
+import { NewsHeading, NewsStoriesConfig, NewsTypeName } from '@models/news-item';
 
 @Component({
   selector: 'app-root',
@@ -9,29 +11,31 @@ import { NewsStoriesConfig } from '@models/news-item';
 })
 
 /**
- * @component that prints the main 3 sections: top stories, best stories, recent stories
+ * @component Prints the main 3 sections: top stories, best stories, recent stories
  * 
  */
 export class AppComponent {
 
-  public newsStoriesConfig: Array<Required<NewsStoriesConfig>> = [
+  public faNewspaper = faNewspaper;
+
+  public newsStoriesConfig: Required<NewsStoriesConfig[]> = [
     {
-      headingText: 'Top Stories',
-      newsType: 'topstories',
+      headingText: NewsHeading.TOPSTORIES,
+      newsType: NewsTypeName.TOPSTORIES,
       limit: 4,
       colClasses: 'col-sm-12 col-md-6 col-lg-3',
       showDescriptionText: false
     },
     {
-      headingText: 'Best Stories',
-      newsType: 'beststories',
+      headingText: NewsHeading.BESTSTORIES,
+      newsType: NewsTypeName.BESTSTORIES,
       limit: 4,
       colClasses: 'col-sm-12 col-md-6 col-lg-3',
       showDescriptionText: false
     },
     {
-      headingText: 'Recent Stories',
-      newsType: 'newstories',
+      headingText: NewsHeading.RECENTSTORIES,
+      newsType: NewsTypeName.NEWSTORIES,
       limit: 50,
       colClasses: 'col-12',
       showDescriptionText: true

@@ -13,17 +13,17 @@ import { Observable } from 'rxjs';
 })
 
 /**
- * @component that fetches all story ids and passes them to a child component news-item that renders the full story
+ * @component Fetches all story ids and passes them to a child component news-item that renders the full story
  * 
  */
 export class NewsStoriesComponent implements OnInit {
 
-  @Input() limit: number;
-  @Input() newsType: NewsType;
-  @Input() colClasses: string;
-  @Input() showDescriptionText: boolean;
+  @Input() public colClasses: string;
+  @Input() public limit: number;
+  @Input() public newsType: NewsType;
+  @Input() public showDescriptionText: boolean;
 
-  public $newsItemIds: Observable<Array<number>>;
+  public $newsItemIds: Observable<number[]>;
 
   constructor(private hackerNewsService: HackerNewsService) {}
 
@@ -32,12 +32,12 @@ export class NewsStoriesComponent implements OnInit {
   }
 
   /**
-   * @param index is the index of the news story in the loop
-   * @param id is the id of the news story in the loop
+   * @param index The index of the news story in the loop
+   * @param id The id of the news story in the loop
    * 
-   * @returns a unique id that will let Angular know what has and hasn't changed in the DOM for performance
+   * @returns A unique id that will let Angular know what has and hasn't changed in the DOM for performance
    */
-  public trackByFn(index: number, id: number) {
+  public trackByFn(index: number, id: number): number {
     return id; 
   }
   

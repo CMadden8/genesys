@@ -1,4 +1,6 @@
-import { Component, OnChanges, SimpleChanges, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+
+import { faWarning, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { HackerNewsService } from '@services/hacker-news.service';
 
@@ -13,30 +15,26 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-
 /**
- * @component that takes a story id as an input then fetches the full story from that id and prints it
+ * @component Takes a story id as an input then fetches the full story from that id and prints it
  * 
  */
-export class NewsItemComponent implements OnChanges {
+export class NewsItemComponent {
 
-  @Input() id: number;
-  @Input() showDescriptionText: boolean;
+  @Input()
+  get id(): number { return this._id; }
+  set id(id: number) {
+    this._id = id;
+    this.$newsItem = this.hackerNewsService.getItem(id);
+  }
+  private _id: number;
 
+  @Input() public showDescriptionText: boolean;
+
+  public faWarning = faWarning;
+  public faArrowUpRightFromSquare = faArrowUpRightFromSquare;
   public $newsItem: Observable<NewsItem>;
 
   constructor(private hackerNewsService: HackerNewsService) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-    if (changes['id'] && changes['id'].currentValue) {
-
-      const id: number = changes['id'].currentValue;
-      
-      this.$newsItem = this.hackerNewsService.getItem(id);
-
-    }
-
-  }
   
 }

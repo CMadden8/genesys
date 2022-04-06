@@ -14,7 +14,7 @@ import * as moment from 'moment';
 })
 
 /**
- * @service that fetches an array of story ids and also fetches the full story using these ids
+ * @service Fetches an array of story ids and also fetches the full story using these ids
  * 
  */
 export class HackerNewsService {
@@ -22,38 +22,39 @@ export class HackerNewsService {
   constructor(private db: AngularFireDatabase){}
   
   /**
-   *  @param newsType is one of the 3 types of news that can be fetched
-   *  @param limit is the max number of news items to retrieve
+   *  @param newsType One of the 3 types of news that can be fetched
+   *  @param limit The max number of news items to retrieve
    * 
-   * @returns an observable of news story ids used to fetch individual new stories
+   * @returns An observable of news story ids used to fetch individual new stories
    */
-  public getStories(newsType: NewsType, limit: number): Observable<Array<number>> {
+  public getStories(newsType: NewsType, limit: number): Observable<number[]> {
     return this.db.list<number>(`/v0/${newsType}`, ref => ref.limitToFirst(limit))
       .valueChanges();
   }
   
   /**
-   * @param id is the id of the news story that's used to fetch a full news story in the format of NewsItemResponse
+   * @param id The id of the news story that's used to fetch a full news story in the format of NewsItemResponse
    * 
-   * @returns a formatted version of NewsItemResponse that has only the fields needed for printing in the UI
+   * @returns A formatted version of NewsItemResponse that has only the fields needed for printing in the UI
    */
   public getItem(id: number): Observable<NewsItem> {
     return this.db.object<NewsItemResponse | null>('/v0/item/' + id)
       .valueChanges()
       .pipe(
-        // a number of the news items return null even with a correct id, so these are filtered out
+        // A number of the news items return null even with a correct id, so these are filtered out
         filter(newsItemResponse => newsItemResponse !== null),
         map(
           (newsItemResponse) => {
 
+            // Occassionally url and text are undefined keys of newsItemReponse, so default them to ''
             if (newsItemResponse) {
-              const { by, time, title, url } = newsItemResponse;
+              const { by, time, title, url = '', text = '' } = newsItemResponse;
 
               const formattedNewsItem: NewsItem = {
                 by,
                 time: moment.unix(time).format('ddd D MMM YYYY H:mm'),
                 title,
-                text: newsItemResponse.text ? newsItemResponse.text : '',
+                text,
                 url
               }
 

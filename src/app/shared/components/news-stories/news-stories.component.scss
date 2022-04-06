@@ -1,0 +1,5 @@
+@import "colours";
+
+::ng-deep .newstories .news-item {
+  border-bottom: 1px solid $hackerNewsLightGrey;
+}

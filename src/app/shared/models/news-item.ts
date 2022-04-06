@@ -7,13 +7,13 @@ export interface NewsItemResponse {
   title: string;
   url: string;
   type: NewsType;
-  kids?: Array<number>;
+  kids?: number[];
   text?: string;
 }
 
 export type NewsItem = Required<Pick<NewsItemResponse, "by" | "title" | "text" | "url"> & { time: string }>;
 
-export type NewsType = 'topstories' | 'newstories' | 'beststories';
+export type NewsType = NewsTypeName.TOPSTORIES | NewsTypeName.NEWSTORIES | NewsTypeName.BESTSTORIES;
 
 export interface NewsStoriesConfig {
   headingText: string;
@@ -21,4 +21,16 @@ export interface NewsStoriesConfig {
   limit: number;
   colClasses: string;
   showDescriptionText: boolean;
+}
+
+export enum NewsTypeName {
+  TOPSTORIES = 'topstories',
+  NEWSTORIES = 'newstories',
+  BESTSTORIES = 'beststories'
+}
+
+export enum NewsHeading {
+  TOPSTORIES = 'Top Stories',
+  BESTSTORIES = 'Best Stories',
+  RECENTSTORIES = 'Recent Stories'
 }

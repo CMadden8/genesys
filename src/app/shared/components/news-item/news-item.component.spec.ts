@@ -1,9 +1,13 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { Spectator, createComponentFactory, mockProvider } from '@ngneat/spectator/jest';
 
 import { NewsItemComponent } from './news-item.component';
 import { HackerNewsService } from '@services/hacker-news.service';
 
-import { getItemMock } from 'src/jest-helpers'
+import { getItemMock } from 'src/jest-helpers';
+
+import { MockComponent } from 'ng-mocks';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,10 +15,14 @@ describe('NewsItemComponent', () => {
   let spectator: Spectator<NewsItemComponent>;
   const createComponent = createComponentFactory({
     component: NewsItemComponent,
+    declarations: [
+      MockComponent(NewsItemComponent)
+    ],
     providers: [
       mockProvider(HackerNewsService, getItemMock)
     ],
-    imports: [NgbModule]
+    imports: [NgbModule],
+    schemas: [NO_ERRORS_SCHEMA]
   });
 
   beforeEach(() => spectator = createComponent());
@@ -31,7 +39,7 @@ describe('NewsItemComponent', () => {
     expect(h3).toHaveText('title1');
     expect(h4).toHaveText('Posted by user1 on time1');
     expect(textSnippet).toHaveText('text1');
-    expect(button).toHaveText('Article Link');
+    expect(button).toHaveText('Full Article');
   });
 
 });
