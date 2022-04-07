@@ -12,8 +12,8 @@
     [ngbTooltip]="newsItem.url" 
     role="button" 
     placement="top" 
-    target="_blank"><span ><fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon>Full Article</span></a>
+    target="_blank"><span ><fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon>{{fullArticleLink}}</span></a>
 
-  <ng-template #no_url><div class="no-url"><fa-icon [icon]="faWarning"></fa-icon> No URL Provided</div></ng-template>
+  <ng-template #no_url><div class="no-url"><fa-icon [icon]="faWarning"></fa-icon>{{noArticleUrlWarning}}</div></ng-template>
 
 </div>

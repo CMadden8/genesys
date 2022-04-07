@@ -30,7 +30,7 @@ describe('NewsStoriesComponent', () => {
 
   
   it('should print 5 news-item child components if 5 ids were returned in getStories()', () => {
-    const newsItems: Array<HTMLElement> = spectator.queryAll('app-news-item');
+    const newsItems: HTMLElement[] = spectator.queryAll('app-news-item');
 
     expect(newsItems.length).toEqual(5);
   });

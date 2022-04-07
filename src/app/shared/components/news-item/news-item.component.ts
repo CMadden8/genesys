@@ -6,6 +6,8 @@ import { HackerNewsService } from '@services/hacker-news.service';
 
 import { NewsItem } from '@models/news-item';
 
+import { NO_ARTICLE_URL_WARNING, FULL_ARTICLE_LINK } from '@constants/constants';
+
 import { Observable } from 'rxjs';
 
 @Component({
@@ -25,11 +27,15 @@ export class NewsItemComponent {
   get id(): number { return this._id; }
   set id(id: number) {
     this._id = id;
-    this.$newsItem = this.hackerNewsService.getItem(id);
+    // A new id will continue to be generated as firebase receives new articles
+    this.$newsItem = this.hackerNewsService.getItem(id); 
   }
   private _id: number;
 
   @Input() public showDescriptionText: boolean;
+
+  public readonly fullArticleLink = FULL_ARTICLE_LINK;
+  public readonly noArticleUrlWarning = NO_ARTICLE_URL_WARNING;
 
   public faWarning = faWarning;
   public faArrowUpRightFromSquare = faArrowUpRightFromSquare;

@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
-import { NewsHeading, NewsStoriesConfig, NewsTypeName } from '@models/news-item';
+import { NewsStoriesConfig, NewsTypeName } from '@models/news-item';
+
+import { APP_TITLE, BESTSTORIES_LIMIT, BESTSTORIES_TITLE, RECENTSTORIES_LIMIT, 
+  RECENTSTORIES_TITLE, TOPSTORIES_LIMIT, TOPSTORIES_TITLE } from '@constants/constants';
 
 @Component({
   selector: 'app-root',
@@ -16,27 +19,29 @@ import { NewsHeading, NewsStoriesConfig, NewsTypeName } from '@models/news-item'
  */
 export class AppComponent {
 
+  public readonly appTitle = APP_TITLE;
+
   public faNewspaper = faNewspaper;
 
   public newsStoriesConfig: Required<NewsStoriesConfig[]> = [
     {
-      headingText: NewsHeading.TOPSTORIES,
+      headingText: TOPSTORIES_TITLE,
       newsType: NewsTypeName.TOPSTORIES,
-      limit: 4,
+      limit: TOPSTORIES_LIMIT,
       colClasses: 'col-sm-12 col-md-6 col-lg-3',
       showDescriptionText: false
     },
     {
-      headingText: NewsHeading.BESTSTORIES,
+      headingText: BESTSTORIES_TITLE,
       newsType: NewsTypeName.BESTSTORIES,
-      limit: 4,
+      limit: BESTSTORIES_LIMIT,
       colClasses: 'col-sm-12 col-md-6 col-lg-3',
       showDescriptionText: false
     },
     {
-      headingText: NewsHeading.RECENTSTORIES,
+      headingText: RECENTSTORIES_TITLE,
       newsType: NewsTypeName.NEWSTORIES,
-      limit: 50,
+      limit: RECENTSTORIES_LIMIT,
       colClasses: 'col-12',
       showDescriptionText: true
     }

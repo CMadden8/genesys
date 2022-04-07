@@ -28,9 +28,3 @@ export enum NewsTypeName {
   NEWSTORIES = 'newstories',
   BESTSTORIES = 'beststories'
 }
-
-export enum NewsHeading {
-  TOPSTORIES = 'Top Stories',
-  BESTSTORIES = 'Best Stories',
-  RECENTSTORIES = 'Recent Stories'
-}

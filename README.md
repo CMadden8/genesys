@@ -30,4 +30,8 @@ The firebase setup was achieved with [AngularFire](https://www.npmjs.com/package
 
 [NG Bootstrap](https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap) was used as the CSS framework for any responsiveness.
 
+## Icons
+
+[NG Bootstrap](https://www.npmjs.com/package/@fortawesome/angular-fontawesome) Angular Font Awesome was used for the icons.
+
 

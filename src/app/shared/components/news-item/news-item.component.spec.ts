@@ -5,6 +5,8 @@ import { Spectator, createComponentFactory, mockProvider } from '@ngneat/spectat
 import { NewsItemComponent } from './news-item.component';
 import { HackerNewsService } from '@services/hacker-news.service';
 
+import { FULL_ARTICLE_LINK } from '@constants/constants';
+
 import { getItemMock } from 'src/jest-helpers';
 
 import { MockComponent } from 'ng-mocks';
@@ -22,7 +24,7 @@ describe('NewsItemComponent', () => {
       mockProvider(HackerNewsService, getItemMock)
     ],
     imports: [NgbModule],
-    schemas: [NO_ERRORS_SCHEMA]
+    schemas: [NO_ERRORS_SCHEMA] // TODO: try to remove this and import FontAwesomeModule instead (currently not working)
   });
 
   beforeEach(() => spectator = createComponent());
@@ -39,7 +41,7 @@ describe('NewsItemComponent', () => {
     expect(h3).toHaveText('title1');
     expect(h4).toHaveText('Posted by user1 on time1');
     expect(textSnippet).toHaveText('text1');
-    expect(button).toHaveText('Full Article');
+    expect(button).toHaveText(FULL_ARTICLE_LINK);
   });
 
 });
