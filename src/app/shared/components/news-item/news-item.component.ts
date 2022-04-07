@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { faWarning, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faWarning, faArrowUpRightFromSquare, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { HackerNewsService } from '@services/hacker-news.service';
 
@@ -34,11 +34,11 @@ export class NewsItemComponent {
 
   @Input() public showDescriptionText: boolean;
 
-  public readonly fullArticleLink = FULL_ARTICLE_LINK;
-  public readonly noArticleUrlWarning = NO_ARTICLE_URL_WARNING;
+  public readonly fullArticleLink: string = FULL_ARTICLE_LINK;
+  public readonly noArticleUrlWarning: string = NO_ARTICLE_URL_WARNING;
 
-  public faWarning = faWarning;
-  public faArrowUpRightFromSquare = faArrowUpRightFromSquare;
+  public faWarning: IconDefinition = faWarning;
+  public faArrowUpRightFromSquare: IconDefinition = faArrowUpRightFromSquare;
   public $newsItem: Observable<NewsItem>;
 
   constructor(private hackerNewsService: HackerNewsService) {}

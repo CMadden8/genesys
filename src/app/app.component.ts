@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faNewspaper, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { NewsStoriesConfig, NewsTypeName } from '@models/news-item';
 
@@ -19,9 +19,9 @@ import { APP_TITLE, BESTSTORIES_LIMIT, BESTSTORIES_TITLE, RECENTSTORIES_LIMIT,
  */
 export class AppComponent {
 
-  public readonly appTitle = APP_TITLE;
+  public readonly appTitle: string = APP_TITLE;
 
-  public faNewspaper = faNewspaper;
+  public faNewspaper: IconDefinition = faNewspaper;
 
   public newsStoriesConfig: Required<NewsStoriesConfig[]> = [
     {
